@@ -1,0 +1,144 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Wave Stacking</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group me-2">
+        <button type="button" class="btn btn-sm btn-outline-primary" onclick="get_wt_wave_stacking();">Generate Wavetable</button>
+    </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-between row">
+    
+    <div class="col-lg-4">
+    <h6 class="text-left mb-2">Base Waveform</h6>
+    <div class="dropdown w-100">
+        <button id="basewave-button" class="btn btn-sm btn-primary dropdown-toggle w-100" type="button" id="baseWaveDropdownButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sine
+        </button>
+        <div class="dropdown-menu" aria-labelledby="baseWaveDropdown">
+        <a id="sine-dropdown" class="dropdown-item" onclick="set_wave('sine');">Sine</a>
+        <a id="triangle-dropdown" class="dropdown-item" onclick="set_wave('triangle');">Triangle</a>
+        <a id="square-dropdown" class="dropdown-item" onclick="set_wave('square');">Square</a>
+        <a id="sawtooth-dropdown" class="dropdown-item" onclick="set_wave('sawtooth');">Sawtooth</a>
+        </div>
+    </div>
+
+    <h6 class="text-left mt-3 mb-1">Morph Probability</h6>
+    <input type="range" class="form-range" value="0.001" min="0.001" max="1.0" step="0.001" oninput="this.nextElementSibling.value = this.value">
+    <output id="morph-probability">0.001</output>
+
+    <h6 class="text-left mt-3 mb-1">Subwave Full Cycle Probability</h6>
+    <input type="range" class="form-range" value="0.5" min="0" max="1.0" step="0.001" oninput="this.nextElementSibling.value = this.value">
+    <output id="full-cycle-probability">0.5</output>
+
+    <h6 class="text-left mt-3 mb-1">Subwave Positive Half Cycle Probability</h6>
+    <input type="range" class="form-range" value="0.5" min="0" max="1.0" step="0.001" oninput="this.nextElementSibling.value = this.value">
+    <output id="positive-half-cycle-probability">0.5</output>
+    </div>
+
+    <div class="col-lg-4">
+    <h6 class="text-left mt-3 mb-1">Subwave Amplitude</h6>
+    <div id="slider-outer-div">
+        <div id="slider-div" style="margin-top:0px;">
+        <div id="slider-min-label">0.001</div>
+        <div>
+            <input id="subwave-amplitude" type="text" data-slider-min="0.001"
+                data-slider-max="1.0" data-slider-value="[0.1,0.4]"
+                data-slider-step="0.001" data-slider-tooltip="show" />
+        </div>
+        <div id="slider-max-label">1.0</div>
+        </div>
+    </div>
+
+    <h6 class="text-left mt-3 mb-1">Subwave Octave</h6>
+    <div id="slider-outer-div">
+        <div id="slider-div" style="margin-top:0px;">
+        <div id="slider-min-label">2</div>
+        <div>
+            <input id="subwave-octave" type="text" data-slider-min="2"
+                data-slider-max="16" data-slider-value="[3,9]"
+                data-slider-step="1" data-slider-tooltip="show" />
+        </div>
+        <div id="slider-max-label">16</div>
+        </div>
+
+        <h6 class="text-left mt-3 mb-2">Level Adjustments</h6>
+        <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="clipping">
+        <label class="form-check-label" for="clipping">
+            Clipping
+        </label>
+        </div>
+
+        <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="normalize-frames" checked>
+        <label class="form-check-label" for="normalize-frames">
+            Normalize Frames
+        </label>
+        </div>
+
+    </div>
+
+    </div>
+
+    <div class="col-lg-4">
+
+    <h6 class="text-left mt-3 mb-2">Subwave Selection</h6>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="enable-sine" checked>
+        <label class="form-check-label" for="enable-sine">
+        Sine Subwave
+        </label>
+    </div>
+
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="enable-triangle">
+        <label class="form-check-label" for="enable-triangle">
+        Triangle Subwave
+        </label>
+    </div>
+
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="enable-square">
+        <label class="form-check-label" for="enable-square">
+        Square Subwave
+        </label>
+    </div>
+
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="enable-sawtooth">
+        <label class="form-check-label" for="enable-sawtooth">
+        Sawtooth Subwave
+        </label>
+    </div>
+
+    <h6 class="text-left mt-3 mb-1">Sine Weight</h6>
+    <input type="range" class="form-range" value="50" min="1" max="100" step="1" oninput="this.nextElementSibling.value = this.value">
+    <output id="weight-sine">50</output>
+
+    <h6 class="text-left mt-3 mb-1">Triangle Weight</h6>
+    <input type="range" class="form-range" value="50" min="1" max="100" step="1" oninput="this.nextElementSibling.value = this.value">
+    <output id="weight-triangle">50</output>
+
+    <h6 class="text-left mt-3 mb-1">Square Weight</h6>
+    <input type="range" class="form-range" value="50" min="1" max="100" step="1" oninput="this.nextElementSibling.value = this.value">
+    <output id="weight-square">50</output>
+
+    <h6 class="text-left mt-3 mb-1">Sawtooth Weight</h6>
+    <input type="range" class="form-range" value="50" min="1" max="100" step="1" oninput="this.nextElementSibling.value = this.value">
+    <output id="weight-sawtooth">50</output>
+
+    </div>
+
+</div>
+
+<script>
+    $('#subwave-amplitude').slider().on('slide', function(ev) {
+        min_amp = ev.value[0];
+        max_amp = ev.value[1];
+    });
+    $('#subwave-octave').slider().on('slide', function(ev) {
+        min_oct = ev.value[0];
+        max_oct = ev.value[1];
+    });
+</script>
