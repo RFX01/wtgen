@@ -21,7 +21,7 @@ module WaveStacking
         @first_frame = []
         @next_frame = []
         @data = []
-        # Generate Initial Sine Wave
+        # Generate Initial Wave
         if stacking_main_wave == "sine"
             @first_frame = generate_sine(WT_FRAME_SIZE, true, true, 1.0)
         elsif stacking_main_wave == "triangle"
@@ -32,7 +32,7 @@ module WaveStacking
             @first_frame = generate_sawtooth(WT_FRAME_SIZE, true, true, 1.0)
         end
     
-        # Push unmodified Sine
+        # Push unmodified Wave
         @data += @first_frame
     
         # Generate Modified Frames

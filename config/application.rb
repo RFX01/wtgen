@@ -14,6 +14,7 @@ module Wtgen
     config.eager_load_paths << "#{Rails.root}/lib"
     config.autoload_paths << "#{Rails.root}/lib/algorithms"
     config.eager_load_paths << "#{Rails.root}/lib/algorithms"
+    config.hosts << /.*/
 
     # Configuration for the application, engines, and railties goes here.
     #

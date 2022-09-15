@@ -3,7 +3,8 @@
 Simple rails application for creating procedurally generated Wavetables (compatible with Phase Plant and Serum). This application does not require a database.
 
 ## Public Instance
-Coming Soon
+[bass2space Instance](https://wtgen.bass2.space)
+[dankNET Instance](https://wtgen.danknet.space)
 
 ## Setup
 
@@ -14,7 +15,7 @@ bundle install
 
 Afterwards, start the application with:
 ```
-rails server -b 0.0.0.0 -e production
+rails server -b 0.0.0.0
 ```
 
 ## Modules
